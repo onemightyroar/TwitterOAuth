@@ -92,7 +92,7 @@ class Twitter
      */
     public function __destruct()
     {
-        if($this->curl != null) curl_close($this->curl);
+        if($this->curl !== null) curl_close($this->curl);
     }
 
     /**
@@ -365,7 +365,7 @@ class Twitter
         // based on the method, we should handle the parameters in a different way
         if ($method == 'POST') {
             // file provided?
-            if ($filePath != null) {
+            if ($filePath !== null) {
                 // build a boundary
                 $boundary = md5(time());
 
@@ -711,19 +711,19 @@ class Twitter
         // build parameters
         $parameters = null;
         $parameters['include_rts'] = 'true';
-        if ($count != null) {
+        if ($count !== null) {
             $parameters['count'] = (int) $count;
         }
-        if ($sinceId != null) {
+        if ($sinceId !== null) {
             $parameters['since_id'] = (string) $sinceId;
         }
-        if ($maxId != null) {
+        if ($maxId !== null) {
             $parameters['max_id'] = (string) $maxId;
         }
-        if ($trimUser != null) {
+        if ($trimUser !== null) {
             $parameters['trim_user'] = ($trimUser) ? 'true' : 'false';
         }
-        if ($contributorDetails != null) {
+        if ($contributorDetails !== null) {
             $parameters['contributor_details'] = ($contributorDetails) ? 'true' : 'false';
         }
         if ($includeEntities !== null) {
@@ -767,31 +767,31 @@ class Twitter
 
         // build parameters
         $parameters = null;
-        if ($userId != null) {
+        if ($userId !== null) {
             $parameters['user_id'] = (string) $userId;
         }
-        if ($screenName != null) {
+        if ($screenName !== null) {
             $parameters['screen_name'] = (string) $screenName;
         }
-        if ($sinceId != null) {
+        if ($sinceId !== null) {
             $parameters['since_id'] = (string) $sinceId;
         }
-        if ($count != null) {
+        if ($count !== null) {
             $parameters['count'] = (int) $count;
         }
-        if ($maxId != null) {
+        if ($maxId !== null) {
             $parameters['max_id'] = (string) $maxId;
         }
-        if ($trimUser != null) {
+        if ($trimUser !== null) {
             $parameters['trim_user'] = ($trimUser) ? 'true' : 'false';
         }
-        if ($excludeReplies != null) {
+        if ($excludeReplies !== null) {
             $parameters['exclude_replies'] = ($excludeReplies) ? 'true' : 'false';
         }
-        if ($contributorDetails != null) {
+        if ($contributorDetails !== null) {
             $parameters['contributor_details'] = ($contributorDetails) ? 'true' : 'false';
         }
-        if ($includeRts != null) {
+        if ($includeRts !== null) {
             $parameters['include_rts'] = ($includeRts) ? 'true' : 'false';
         }
 
@@ -823,22 +823,22 @@ class Twitter
     {
         // build parameters
         $parameters = null;
-        if ($count != null) {
+        if ($count !== null) {
             $parameters['count'] = (int) $count;
         }
-        if ($sinceId != null) {
+        if ($sinceId !== null) {
             $parameters['since_id'] = (string) $sinceId;
         }
-        if ($maxId != null) {
+        if ($maxId !== null) {
             $parameters['max_id'] = (string) $maxId;
         }
-        if ($trimUser != null) {
+        if ($trimUser !== null) {
             $parameters['trim_user'] = ($trimUser) ? 'true' : 'false';
         }
-        if ($excludeReplies != null) {
+        if ($excludeReplies !== null) {
             $parameters['exclude_replies'] = ($excludeReplies) ? 'true' : 'false';
         }
-        if ($contributorDetails != null) {
+        if ($contributorDetails !== null) {
             $parameters['contributor_details'] = ($contributorDetails) ? 'true' : 'false';
         }
         if ($includeEntities !== null) {
@@ -870,22 +870,22 @@ class Twitter
     {
         // build parameters
         $parameters = null;
-        if ($count != null) {
+        if ($count !== null) {
             $parameters['count'] = (int) $count;
         }
-        if ($sinceId != null) {
+        if ($sinceId !== null) {
             $parameters['since_id'] = (string) $sinceId;
         }
-        if ($maxId != null) {
+        if ($maxId !== null) {
             $parameters['max_id'] = (string) $maxId;
         }
-        if ($trimUser != null) {
+        if ($trimUser !== null) {
             $parameters['trim_user'] = ($trimUser) ? 'true' : 'false';
         }
         if ($includeEntities !== null) {
             $parameters['include_entities'] = ($includeEntities) ? 'true' : 'false';
         }
-        if ($includeUserEntities != null) {
+        if ($includeUserEntities !== null) {
             $parameters['include_user_entities'] = ($includeUserEntities) ? 'true' : 'false';
         }
 
@@ -909,10 +909,10 @@ class Twitter
     {
         // build parameters
         $parameters = null;
-        if ($count != null) {
+        if ($count !== null) {
             $parameters['count'] = (int) $count;
         }
-        if ($trimUser != null) {
+        if ($trimUser !== null) {
             $parameters['trim_user'] = ($trimUser) ? 'true' : 'false';
         }
 
@@ -938,10 +938,10 @@ class Twitter
     {
         // build parameters
         $parameters['id'] = (string) $id;
-        if ($trimUser != null) {
+        if ($trimUser !== null) {
             $parameters['trim_user'] = ($trimUser) ? 'true' : 'false';
         }
-        if ($includeMyRetweet != null) {
+        if ($includeMyRetweet !== null) {
             $parameters['include_my_retweet'] = ($includeMyRetweet) ? 'true' : 'false';
         }
         if ($includeEntities !== null) {
@@ -966,7 +966,7 @@ class Twitter
     {
         // build parameters
         $parameters = null;
-        if($trimUser != null) $parameters['trim_user'] = ($trimUser) ? 'true' : 'false';
+        if($trimUser !== null) $parameters['trim_user'] = ($trimUser) ? 'true' : 'false';
 
         // make the call
         return (array) $this->doCall(
@@ -994,19 +994,19 @@ class Twitter
     {
         // build parameters
         $parameters['status'] = (string) $status;
-        if ($inReplyToStatusId != null) {
+        if ($inReplyToStatusId !== null) {
             $parameters['in_reply_to_status_id'] = (string) $inReplyToStatusId;
         }
-        if ($lat != null) {
+        if ($lat !== null) {
             $parameters['lat'] = (float) $lat;
         }
-        if ($long != null) {
+        if ($long !== null) {
             $parameters['long'] = (float) $long;
         }
-        if ($placeId != null) {
+        if ($placeId !== null) {
             $parameters['place_id'] = (string) $placeId;
         }
-        if ($displayCoordinates != null) {
+        if ($displayCoordinates !== null) {
             $parameters['display_coordinates'] = ($displayCoordinates) ? 'true' : 'false';
         }
         if ($trimUser) {
@@ -1030,7 +1030,7 @@ class Twitter
     public function statusesRetweet($id, $trimUser = null)
     {
         $parameters = null;
-        if ($trimUser != null) {
+        if ($trimUser !== null) {
             $parameters['trim_user'] = ($trimUser) ? 'true' : 'false';
         }
 
@@ -1073,31 +1073,31 @@ class Twitter
 
         // build parameters
         $parameters = null;
-        if ($id != null) {
+        if ($id !== null) {
             $parameters['id'] = (string) $id;
         }
-        if ($url != null) {
+        if ($url !== null) {
             $parameters['url'] = (string) $url;
         }
-        if ($maxwidth != null) {
+        if ($maxwidth !== null) {
             $parameters['maxwidth'] = (int) $maxwidth;
         }
-        if ($hideMedia != null) {
+        if ($hideMedia !== null) {
             $parameters['hide_media'] = ($hideMedia) ? 'true' : 'false';
         }
-        if ($hideThread != null) {
+        if ($hideThread !== null) {
             $parameters['hide_thread'] = ($hideThread) ? 'true' : 'false';
         }
-        if ($omitScript != null) {
+        if ($omitScript !== null) {
             $parameters['omit_script'] = ($omitScript) ? 'true' : 'false';
         }
-        if ($align != null) {
+        if ($align !== null) {
             $parameters['align'] = (string) $align;
         }
-        if ($related != null) {
+        if ($related !== null) {
             $parameters['related'] = (string) $related;
         }
-        if ($lang != null) {
+        if ($lang !== null) {
             $parameters['lang'] = (string) $lang;
         }
 
@@ -1226,16 +1226,16 @@ class Twitter
     {
         // build parameters
         $parameters = array();
-        if ($sinceId != null) {
+        if ($sinceId !== null) {
             $parameters['since_id'] = (string) $sinceId;
         }
-        if ($maxId != null) {
+        if ($maxId !== null) {
             $parameters['max_id'] = (string) $maxId;
         }
-        if ($count != null) {
+        if ($count !== null) {
             $parameters['count'] = (int) $count;
         }
-        if ($page != null) {
+        if ($page !== null) {
             $parameters['page'] = (int) $page;
         }
         if ($includeEntities !== null) {
@@ -1270,16 +1270,16 @@ class Twitter
     {
         // build parameters
         $parameters = array();
-        if ($sinceId != null) {
+        if ($sinceId !== null) {
             $parameters['since_id'] = (string) $sinceId;
         }
-        if ($maxId != null) {
+        if ($maxId !== null) {
             $parameters['max_id'] = (string) $maxId;
         }
-        if ($count != null) {
+        if ($count !== null) {
             $parameters['count'] = (int) $count;
         }
-        if ($page != null) {
+        if ($page !== null) {
             $parameters['page'] = (int) $page;
         }
         if ($includeEntities !== null) {
@@ -1352,10 +1352,10 @@ class Twitter
 
         // build parameters
         $parameters['text'] = (string) $text;
-        if ($userId != null) {
+        if ($userId !== null) {
             $parameters['user_id'] = (string) $userId;
         }
-        if ($screenName != null) {
+        if ($screenName !== null) {
             $parameters['screen_name'] = (string) $screenName;
         }
 
@@ -1389,13 +1389,13 @@ class Twitter
 
         // build parameters
         $parameters = null;
-        if ($userId != null) {
+        if ($userId !== null) {
             $parameters['user_id'] = (string) $userId;
         }
-        if ($screenName != null) {
+        if ($screenName !== null) {
             $parameters['screen_name'] = (string) $screenName;
         }
-        if ($cursor != null) {
+        if ($cursor !== null) {
             $parameters['cursor'] = (string) $cursor;
         }
         if ($stringifyIds !== null) {
@@ -1427,13 +1427,13 @@ class Twitter
         }
 
         // build parameters
-        if ($userId != null) {
+        if ($userId !== null) {
             $parameters['user_id'] = (string) $userId;
         }
-        if ($screenName != null) {
+        if ($screenName !== null) {
             $parameters['screen_name'] = (string) $screenName;
         }
-        if ($cursor != null) {
+        if ($cursor !== null) {
             $parameters['cursor'] = (string) $cursor;
         }
         $parameters['stringify_ids'] = ((bool) $stringifyIds) ? 'true' : 'false';
@@ -1485,7 +1485,7 @@ class Twitter
     {
         // build parameters
         $parameters = null;
-        if($cursor != null) $parameters['cursor'] = (string) $cursor;
+        if($cursor !== null) $parameters['cursor'] = (string) $cursor;
         $parameters['stringify_ids'] = ((bool) $stringifyIds) ? 'true' : 'false';
 
         // make the call
@@ -1505,7 +1505,7 @@ class Twitter
     {
         // build parameters
         $parameters = null;
-        if($cursor != null) $parameters['cursor'] = (string) $cursor;
+        if($cursor !== null) $parameters['cursor'] = (string) $cursor;
         $parameters['stringify_ids'] = ((bool) $stringifyIds) ? 'true' : 'false';
 
         // make the call
@@ -1535,10 +1535,10 @@ class Twitter
 
         // build parameters
         $parameters = null;
-        if ($userId != null) {
+        if ($userId !== null) {
             $parameters['user_id'] = (string) $userId;
         }
-        if ($screenName != null) {
+        if ($screenName !== null) {
             $parameters['screen_name'] = (string) $screenName;
         }
         $parameters['follow'] = ($follow) ? 'true' : 'false';
@@ -1566,10 +1566,10 @@ class Twitter
         }
 
         // build parameters
-        if ($userId != null) {
+        if ($userId !== null) {
             $parameters['user_id'] = (string) $userId;
         }
-        if ($screenName != null) {
+        if ($screenName !== null) {
             $parameters['screen_name'] = (string) $screenName;
         }
 
@@ -1599,10 +1599,10 @@ class Twitter
 
         // build parameters
         $parameters = null;
-        if ($userId != null) {
+        if ($userId !== null) {
             $parameters['user_id'] = (string) $userId;
         }
-        if ($screenName != null) {
+        if ($screenName !== null) {
             $parameters['screen_name'] = (string) $screenName;
         }
         if ($device !== null) {
@@ -1640,16 +1640,16 @@ class Twitter
         }
 
         // build parameters
-        if ($sourceId != null) {
+        if ($sourceId !== null) {
             $parameters['source_id'] = (string) $sourceId;
         }
-        if ($sourceScreenName != null) {
+        if ($sourceScreenName !== null) {
             $parameters['source_screen_name'] = (string) $sourceScreenName;
         }
-        if ($targetId != null) {
+        if ($targetId !== null) {
             $parameters['target_id'] = (string) $targetId;
         }
-        if ($targetScreenName != null) {
+        if ($targetScreenName !== null) {
             $parameters['target_screen_name'] = (string) $targetScreenName;
         }
 
@@ -1680,10 +1680,10 @@ class Twitter
 
         // build parameters
         $parameters = null;
-        if ($userId != null) {
+        if ($userId !== null) {
             $parameters['user_id'] = (string) $userId;
         }
-        if ($screenName != null) {
+        if ($screenName !== null) {
             $parameters['screen_name'] = (string) $screenName;
         }
         if ($cursor !== null) {
@@ -1725,10 +1725,10 @@ class Twitter
 
         // build parameters
         $parameters = null;
-        if ($userId != null) {
+        if ($userId !== null) {
             $parameters['user_id'] = (string) $userId;
         }
-        if ($screenName != null) {
+        if ($screenName !== null) {
             $parameters['screen_name'] = (string) $screenName;
         }
         if ($cursor !== null) {
@@ -1872,16 +1872,16 @@ class Twitter
     {
         // build parameters
         $parameters = null;
-        if ($name != null) {
+        if ($name !== null) {
             $parameters['name'] = (string) $name;
         }
-        if ($url != null) {
+        if ($url !== null) {
             $parameters['url'] = (string) $url;
         }
-        if ($location != null) {
+        if ($location !== null) {
             $parameters['location'] = (string) $location;
         }
-        if ($description != null) {
+        if ($description !== null) {
             $parameters['description'] = (string) $description;
         }
         if ($includeEntities !== null) {
@@ -1954,19 +1954,19 @@ class Twitter
         }
 
         // build parameters
-        if ($profileBackgroundColor != null) {
+        if ($profileBackgroundColor !== null) {
             $parameters['profile_background_color'] = (string) $profileBackgroundColor;
         }
-        if ($profileTextColor != null) {
+        if ($profileTextColor !== null) {
             $parameters['profile_text_color'] = (string) $profileTextColor;
         }
-        if ($profileLinkColor != null) {
+        if ($profileLinkColor !== null) {
             $parameters['profile_link_color'] = (string) $profileLinkColor;
         }
-        if ($profileSidebarFillColor != null) {
+        if ($profileSidebarFillColor !== null) {
             $parameters['profile_sidebar_fill_color'] = (string) $profileSidebarFillColor;
         }
-        if ($profileSidebarBorderColor != null) {
+        if ($profileSidebarBorderColor !== null) {
             $parameters['profile_sidebar_border_color'] = (string) $profileSidebarBorderColor;
         }
         if ($includeEntities !== null) {
@@ -2046,7 +2046,7 @@ class Twitter
     {
         // build parameters
         $parameters = null;
-        if ($cursor != null) {
+        if ($cursor !== null) {
             $parameters['cursor'] = (string) $cursor;
         }
         if ($stringifyIds !== null) {
@@ -2079,10 +2079,10 @@ class Twitter
         }
 
         // build parameters
-        if ($userId != null) {
+        if ($userId !== null) {
             $parameters['user_id'] = (string) $userId;
         }
-        if ($screenName != null) {
+        if ($screenName !== null) {
             $parameters['screen_name'] = (string) $screenName;
         }
         if ($includeEntities !== null) {
@@ -2118,10 +2118,10 @@ class Twitter
         }
 
         // build parameters
-        if ($userId != null) {
+        if ($userId !== null) {
             $parameters['user_id'] = (string) $userId;
         }
-        if ($screenName != null) {
+        if ($screenName !== null) {
             $parameters['screen_name'] = (string) $screenName;
         }
         if ($includeEntities !== null) {
@@ -2192,10 +2192,10 @@ class Twitter
 
         // build parameters
         $parameters = null;
-        if ($userId != null) {
+        if ($userId !== null) {
             $parameters['user_id'] = (string) $userId;
         }
-        if ($screenName != null) {
+        if ($screenName !== null) {
             $parameters['screen_name'] = (string) $screenName;
         }
         if ($includeEntities !== null) {
@@ -2222,8 +2222,8 @@ class Twitter
     {
         // build parameters
         $parameters['q'] = (string) $q;
-        if($page != null) $parameters['page'] = (int) $page;
-        if($count != null) $parameters['count'] = (int) $count;
+        if($page !== null) $parameters['page'] = (int) $page;
+        if($count !== null) $parameters['count'] = (int) $count;
         if ($includeEntities !== null) {
             $parameters['include_entities'] = ($includeEntities) ? 'true' : 'false';
         }
@@ -2252,10 +2252,10 @@ class Twitter
         }
 
         // build parameters
-        if ($userId != null) {
+        if ($userId !== null) {
             $parameters['user_id'] = (string) $userId;
         }
-        if ($screenName != null) {
+        if ($screenName !== null) {
             $parameters['screen_name'] = (string) $screenName;
         }
         if ($includeEntities !== null) {
@@ -2291,10 +2291,10 @@ class Twitter
         }
 
         // build parameters
-        if ($userId != null) {
+        if ($userId !== null) {
             $parameters['user_id'] = (string) $userId;
         }
-        if ($screenName != null) {
+        if ($screenName !== null) {
             $parameters['screen_name'] = (string) $screenName;
         }
         if ($includeEntities !== null) {
@@ -2349,8 +2349,8 @@ class Twitter
 
         // build parameters
         $parameters = null;
-        if($userId != null) $parameters['user_id'] = (string) $userId;
-        if($screenName != null) $parameters['screen_name'] = (string) $screenName;
+        if($userId !== null) $parameters['user_id'] = (string) $userId;
+        if($screenName !== null) $parameters['screen_name'] = (string) $screenName;
 
         return (array) $this->doCall(
             'users/profile_banner.json',
@@ -2370,7 +2370,7 @@ class Twitter
     public function usersSuggestionsSlug($slug, $lang = null)
     {
         $parameters = null;
-        if($lang != null) $parameters['lang'] = (string) $lang;
+        if($lang !== null) $parameters['lang'] = (string) $lang;
 
         return (array) $this->doCall(
             'users/suggestions/' . (string) $slug . '.json',
@@ -2387,7 +2387,7 @@ class Twitter
     public function usersSuggestions($lang = null)
     {
         $parameters = null;
-        if($lang != null) $parameters['lang'] = (string) $lang;
+        if($lang !== null) $parameters['lang'] = (string) $lang;
 
         return (array) $this->doCall(
             'users/suggestions.json',
@@ -2432,11 +2432,11 @@ class Twitter
 
         // build parameters
         $parameters = null;
-        if($userId != null) $parameters['user_id'] = (string) $userId;
-        if($screenName != null) $parameters['screen_name'] = (string) $screenName;
-        if($count != null) $parameters['count'] = (int) $count;
-        if($sinceId != null) $parameters['since_id'] = (string) $sinceId;
-        if($maxId != null) $parameters['max_id'] = (string) $maxId;
+        if($userId !== null) $parameters['user_id'] = (string) $userId;
+        if($screenName !== null) $parameters['screen_name'] = (string) $screenName;
+        if($count !== null) $parameters['count'] = (int) $count;
+        if($sinceId !== null) $parameters['since_id'] = (string) $sinceId;
+        if($maxId !== null) $parameters['max_id'] = (string) $maxId;
         if ($includeEntities !== null) {
             $parameters['include_entities'] = ($includeEntities) ? 'true' : 'false';
         }
@@ -2727,13 +2727,13 @@ class Twitter
         // build parameters
         $parameters['lat'] = (float) $lat;
         $parameters['long'] = (float) $long;
-        if ($accuracy != null) {
+        if ($accuracy !== null) {
             $parameters['accuracy'] = (string) $accuracy;
         }
-        if ($granularity != null) {
+        if ($granularity !== null) {
             $parameters['granularity'] = (string) $granularity;
         }
-        if ($maxResults != null) {
+        if ($maxResults !== null) {
             $parameters['max_results'] = (int) $maxResults;
         }
 
@@ -2765,31 +2765,31 @@ class Twitter
     {
         // build parameters
         $parameters = array();
-        if ($lat != null) {
+        if ($lat !== null) {
             $parameters['lat'] = (float) $lat;
         }
-        if ($long != null) {
+        if ($long !== null) {
             $parameters['long'] = (float) $long;
         }
-        if ($query != null) {
+        if ($query !== null) {
             $parameters['query'] = (string) $query;
         }
-        if ($ip != null) {
+        if ($ip !== null) {
             $parameters['ip'] = (string) $ip;
         }
-        if ($accuracy != null) {
+        if ($accuracy !== null) {
             $parameters['accuracy'] = (string) $accuracy;
         }
-        if ($granularity != null) {
+        if ($granularity !== null) {
             $parameters['granularity'] = (string) $granularity;
         }
-        if ($maxResults != null) {
+        if ($maxResults !== null) {
             $parameters['max_results'] = (int) $maxResults;
         }
-        if ($containedWithin != null) {
+        if ($containedWithin !== null) {
             $parameters['contained_within'] = (string) $containedWithin;
         }
-        if ($attributes != null) {
+        if ($attributes !== null) {
             foreach ($attributes as $key => $value) {
                 $parameters['attribute:' . $key] = (string) $value;
             }
@@ -2819,10 +2819,10 @@ class Twitter
         $parameters['lat'] = (float) $lat;
         $parameters['long'] = (float) $long;
         $parameters['name'] = (string) $name;
-        if ($containedWithin != null) {
+        if ($containedWithin !== null) {
             $parameters['contained_within'] = (string) $containedWithin;
         }
-        if ($attributes != null) {
+        if ($attributes !== null) {
             foreach ($attributes as $key => $value) {
                 $parameters['attribute:' . $key] = (string) $value;
             }
@@ -2853,7 +2853,7 @@ class Twitter
         $parameters['token'] = (string) $token;
         $parameters['lat'] = (float) $lat;
         $parameters['long'] = (float) $long;
-        if ($attributes != null) {
+        if ($attributes !== null) {
             foreach ($attributes as $key => $value) {
                 $parameters['attribute:' . $key] = (string) $value;
             }
@@ -2879,7 +2879,7 @@ class Twitter
     {
         // build parameters
         $parameters['id'] = (string) $id;
-        if ($exclude != null) {
+        if ($exclude !== null) {
             $parameters['exclude'] = (string) $exclude;
         }
 
@@ -2902,8 +2902,8 @@ class Twitter
     {
         // build parameters
         $parameters = null;
-        if($lat != null) $parameters['lat_for_trends'] = (float) $lat;
-        if($long != null) $parameters['long_for_trends'] = (float) $long;
+        if($lat !== null) $parameters['lat_for_trends'] = (float) $lat;
+        if($long !== null) $parameters['long_for_trends'] = (float) $long;
 
         // make the call
         return (array) $this->doCall('trends/available.json', $parameters);
@@ -2921,8 +2921,8 @@ class Twitter
     {
         // build parameters
         $parameters = null;
-        if($lat != null) $parameters['lat'] = (float) $lat;
-        if($long != null) $parameters['long'] = (float) $long;
+        if($lat !== null) $parameters['lat'] = (float) $lat;
+        if($long !== null) $parameters['long'] = (float) $long;
 
         // make the call
         return (array) $this->doCall('trends/closest.json', $parameters);
@@ -2944,10 +2944,10 @@ class Twitter
         }
 
         // build parameters
-        if ($userId != null) {
+        if ($userId !== null) {
             $parameters['user_id'] = (string) $userId;
         }
-        if ($screenName != null) {
+        if ($screenName !== null) {
             $parameters['screen_name'] = (string) $screenName;
         }
 
@@ -3031,7 +3031,7 @@ class Twitter
         $parameters = null;
 
         // set callback
-        if ($callbackURL != null) {
+        if ($callbackURL !== null) {
             $parameters['oauth_callback'] = (string) $callbackURL;
         }
 
