@@ -178,7 +178,7 @@ class Twitter
             // only add if not already in the url
             if (substr_count($url, $key . '=' . $value) == 0) {
                 $chunks[] = self::urlencode_rfc3986($key) . '%3D' .
-                            self::urlencode_rfc3986($value);
+                    self::urlencode_rfc3986($value);
             }
         }
 
@@ -222,7 +222,7 @@ class Twitter
 
         // build return
         $return = 'Authorization: OAuth realm="' . $parts['scheme'] . '://' .
-                  $parts['host'] . $parts['path'] . '", ';
+            $parts['host'] . $parts['path'] . '", ';
         $return .= implode(',', $chunks);
 
         // prepend name and OAuth part
@@ -341,7 +341,7 @@ class Twitter
         if (!in_array($method, $allowedMethods)) {
             throw new Exception(
                 'Unknown method (' . $method . '). Allowed methods are: ' .
-                implode(', ', $allowedMethods)
+                    implode(', ', $allowedMethods)
             );
         }
 
@@ -384,7 +384,7 @@ class Twitter
 
                 // set file
                 $content .= 'Content-Disposition: form-data; name=image; filename="' .
-                            $fileInfo['basename'] . '"' . "\r\n";
+                    $fileInfo['basename'] . '"' . "\r\n";
                 $content .= 'Content-Type: ' . $mimeType . "\r\n";
                 $content .= "\r\n";
                 $content .= file_get_contents($filePath);
@@ -1478,7 +1478,7 @@ class Twitter
      * Returns a collection of numeric IDs for every user who has a pending request to follow the authenticating user.
      *
      * @param string[optional] $cursor Causes the list of connections to be broken into pages of no more than 5000 IDs at a time. The number of IDs returned is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor is provided, a value of -1 will be assumed, which is the first "page."
-      * @param  bool[optional] 	$stringifyIds	Many programming environments will not consume our Tweet ids due to their size. Provide this option to have ids returned as strings instead.
+     * @param  bool[optional] 	$stringifyIds	Many programming environments will not consume our Tweet ids due to their size. Provide this option to have ids returned as strings instead.
      * @return array
      */
     public function friendshipsIncoming($cursor = null, $stringifyIds = true)
@@ -2499,11 +2499,65 @@ class Twitter
     }
 
     /**
-     * Not implemented yet
+     * Returns the most recent statuses, including retweets if they exist, from the specific Twitter list.
+     *
+     * @param  string           $listId             The ID of the list. If this is not specified, than a listSlug and ownerScreenName or ownerId are required.
+     * @param  string           $listSlug           The slug of the list. If this is used, than either $ownerScreenName or $ownerId must also be provided.
+     * @param  string[optional] $ownerScreenName    The screen name of the list owner
+     * @param  string[optional] $ownerId            The ID of the list owner
+     * @param  int[optional]    $count              Specifies the number of records to retrieve.
+     * @param  string[optional] $sinceId            Returns results with an ID greater than (that is, more recent than) the specified ID. There are limits to the number of Tweets which can be accessed through the API. If the limit of Tweets has occured since the since_id, the since_id will be forced to the oldest ID available.
+     * @param  string[optional] $maxId              Returns results with an ID less than (that is, older than) or equal to the specified ID.
+     * @param  bool[optional]   $includeEntities    The entities node will be disincluded when set to false.
+     * @param  bool[optional]   $includeRts         When set to either true, t or 1, the list timeline will contain native retweets (if they exist) in addition to the standard stream of tweets. The output format of retweeted tweets is identical to the representation you see in home_timeline.
+     * @return array
      */
-    public function listsStatuses()
+    public function listsStatuses(
+        $listId = null, $listSlug = null, $ownerScreenName = null, $ownerId = null,
+        $count = null, $sinceId = null, $maxId = null,
+        $includeEntities = null, $includeRts = null
+    )
     {
-        throw new Exception('Not implemented');
+        // validate
+        if ($listId === null && $listSlug === null) {
+            throw new Exception('Specify a listId or a slug.');
+        }
+
+        // build parameters
+        $parameters = null;
+        if ($listId !== null) {
+            $parameters['list_id'] = (string) $listId;
+        }
+        if ($listSlug !== null) {
+            $parameters['slug'] = (string) $listSlug;
+        }
+        if ($ownerScreenName !== null) {
+            $parameters['owner_screen_name'] = (string) $ownerScreenName;
+        }
+        if ($ownerId !== null) {
+            $parameters['owner_id'] = (string) $ownerId;
+        }
+        if ($sinceId !== null) {
+            $parameters['since_id'] = (string) $sinceId;
+        }
+        if ($maxId !== null) {
+            $parameters['max_id'] = (string) $maxId;
+        }
+        if ($count !== null) {
+            $parameters['count'] = (int) $count;
+        }
+        if ($includeEntities !== null) {
+            $parameters['include_entities'] = ($includeEntities) ? 'true' : 'false';
+        }
+        if ($includeRts !== null) {
+            $parameters['include_rts'] = ($includeRts) ? 'true' : 'false';
+        }
+
+        // make the call
+        return (array) $this->doCall(
+            'lists/statuses.json',
+            $parameters
+        );
     }
 
     /**
@@ -2985,7 +3039,7 @@ class Twitter
     public function oAuthAuthorize($token)
     {
         header('Location: ' . self::SECURE_API_URL .
-               '/oauth/authorize?oauth_token=' . $token);
+                '/oauth/authorize?oauth_token=' . $token);
     }
 
     /**
